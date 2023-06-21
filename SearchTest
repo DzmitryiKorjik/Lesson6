@@ -1,0 +1,17 @@
+package Lesson5;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
+
+public class SearchTest extends AbstractLiveJournalTest {
+
+    @Test
+    public void testSearchFunctionality() {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+
+        SearchResultsPage resultsPage = homePage.search("тестирование ПО");
+
+        Assertions.assertTrue(resultsPage.areSearchResultsDisplayed(), "Результаты поиска не отображаются");
+    }
+}
