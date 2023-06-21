@@ -1,0 +1,27 @@
+package Lesson5;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage {
+    private WebDriver driver;
+
+    private By searchInput = By.className("searchform-search-query");
+
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void open() {
+        driver.get("https://www.livejournal.com/");
+    }
+
+    public SearchResultsPage search(String query) {
+        WebElement searchInputElem = driver.findElement(searchInput);
+        searchInputElem.sendKeys(query);
+        searchInputElem.sendKeys(Keys.ENTER);
+
+        return new SearchResultsPage(driver);
+    }
+}
